@@ -16,5 +16,15 @@ namespace PC_Protected_App
         {
             InitializeComponent();
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            label1.Text = new Tcp_S_R().ReceiveMessage();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            new Tcp_S_R().SendMessage(richTextBox1.Text);
+        }
     }
 }
