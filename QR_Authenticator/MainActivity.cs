@@ -93,11 +93,11 @@ namespace QR_Authenticator
             }
             else if (id == Resource.Id.nav_share)
             {
-
+                label1.Text = new Tcp_S_R().ReceiveMessage();
             }
             else if (id == Resource.Id.nav_send)
             {
-
+                new Tcp_S_R().SendMessage(richTextBox1.Text);
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
