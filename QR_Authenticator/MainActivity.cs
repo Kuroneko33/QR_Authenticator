@@ -8,6 +8,7 @@ using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
+using Android.Widget;
 
 namespace QR_Authenticator
 {
@@ -66,9 +67,10 @@ namespace QR_Authenticator
 
         private void FabOnClick(object sender, EventArgs eventArgs)
         {
-            View view = (View) sender;
+            /*View view = (View) sender;
             Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
-                .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
+                .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();*/
+            FindViewById<TextView>(Resource.Id.textView).Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
         }
 
         public bool OnNavigationItemSelected(IMenuItem item)
@@ -77,27 +79,26 @@ namespace QR_Authenticator
 
             if (id == Resource.Id.nav_camera)
             {
-                // Handle the camera action
+                FindViewById<TextView>(Resource.Id.textView).Text = "Хуй";
             }
             else if (id == Resource.Id.nav_gallery)
             {
-
+                FindViewById<TextView>(Resource.Id.textView).Text = "Хуй";
             }
             else if (id == Resource.Id.nav_slideshow)
             {
-
+                FindViewById<TextView>(Resource.Id.textView).Text = "Хуй";
             }
             else if (id == Resource.Id.nav_manage)
             {
-
+                FindViewById<TextView>(Resource.Id.textView).Text = "Хуй";
             }
             else if (id == Resource.Id.nav_share)
             {
-
             }
             else if (id == Resource.Id.nav_send)
             {
-
+                new Tcp_S_R.Tcp_S_R("192.168.100.3").SendMessage(new DateTime().ToString("D"));
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);

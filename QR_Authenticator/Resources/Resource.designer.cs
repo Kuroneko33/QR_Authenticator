@@ -3418,8 +3418,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0040
 			public const int collapseActionView = 2131361856;
 			
-			// aapt resource value: 0x7f0a00a8
-			public const int container = 2131361960;
+			// aapt resource value: 0x7f0a00a9
+			public const int container = 2131361961;
 			
 			// aapt resource value: 0x7f0a0082
 			public const int content = 2131361922;
@@ -3427,8 +3427,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0075
 			public const int contentPanel = 2131361909;
 			
-			// aapt resource value: 0x7f0a00a9
-			public const int coordinator = 2131361961;
+			// aapt resource value: 0x7f0a00aa
+			public const int coordinator = 2131361962;
 			
 			// aapt resource value: 0x7f0a007c
 			public const int custom = 2131361916;
@@ -3442,20 +3442,20 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a006f
 			public const int default_activity_button = 2131361903;
 			
-			// aapt resource value: 0x7f0a00ab
-			public const int design_bottom_sheet = 2131361963;
+			// aapt resource value: 0x7f0a00ac
+			public const int design_bottom_sheet = 2131361964;
+			
+			// aapt resource value: 0x7f0a00b1
+			public const int design_menu_item_action_area = 2131361969;
 			
 			// aapt resource value: 0x7f0a00b0
-			public const int design_menu_item_action_area = 2131361968;
+			public const int design_menu_item_action_area_stub = 2131361968;
 			
 			// aapt resource value: 0x7f0a00af
-			public const int design_menu_item_action_area_stub = 2131361967;
+			public const int design_menu_item_text = 2131361967;
 			
 			// aapt resource value: 0x7f0a00ae
-			public const int design_menu_item_text = 2131361966;
-			
-			// aapt resource value: 0x7f0a00ad
-			public const int design_navigation_view = 2131361965;
+			public const int design_navigation_view = 2131361966;
 			
 			// aapt resource value: 0x7f0a0027
 			public const int disableHome = 2131361831;
@@ -3529,8 +3529,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a006e
 			public const int image = 2131361902;
 			
-			// aapt resource value: 0x7f0a00b2
-			public const int imageView = 2131361970;
+			// aapt resource value: 0x7f0a00b3
+			public const int imageView = 2131361971;
 			
 			// aapt resource value: 0x7f0a00ba
 			public const int info = 2131361978;
@@ -3544,8 +3544,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a004e
 			public const int labeled = 2131361870;
 			
-			// aapt resource value: 0x7f0a00a7
-			public const int largeLabel = 2131361959;
+			// aapt resource value: 0x7f0a00a8
+			public const int largeLabel = 2131361960;
 			
 			// aapt resource value: 0x7f0a0054
 			public const int left = 2131361876;
@@ -3604,8 +3604,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a009e
 			public const int nav_view = 2131361950;
 			
-			// aapt resource value: 0x7f0a00ac
-			public const int navigation_header_container = 2131361964;
+			// aapt resource value: 0x7f0a00ad
+			public const int navigation_header_container = 2131361965;
 			
 			// aapt resource value: 0x7f0a0042
 			public const int never = 2131361858;
@@ -3733,8 +3733,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a002c
 			public const int showTitle = 2131361836;
 			
-			// aapt resource value: 0x7f0a00a6
-			public const int smallLabel = 2131361958;
+			// aapt resource value: 0x7f0a00a7
+			public const int smallLabel = 2131361959;
 			
 			// aapt resource value: 0x7f0a0016
 			public const int snackbar_action = 2131361814;
@@ -3802,11 +3802,11 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a005a
 			public const int textStart = 2131361882;
 			
-			// aapt resource value: 0x7f0a00b3
-			public const int textView = 2131361971;
+			// aapt resource value: 0x7f0a00a6
+			public const int textView = 2131361958;
 			
-			// aapt resource value: 0x7f0a00b1
-			public const int text_input_password_toggle = 2131361969;
+			// aapt resource value: 0x7f0a00b2
+			public const int text_input_password_toggle = 2131361970;
 			
 			// aapt resource value: 0x7f0a0018
 			public const int textinput_counter = 2131361816;
@@ -3838,8 +3838,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a007d
 			public const int topPanel = 2131361917;
 			
-			// aapt resource value: 0x7f0a00aa
-			public const int touch_outside = 2131361962;
+			// aapt resource value: 0x7f0a00ab
+			public const int touch_outside = 2131361963;
 			
 			// aapt resource value: 0x7f0a000f
 			public const int transition_current_scene = 2131361807;

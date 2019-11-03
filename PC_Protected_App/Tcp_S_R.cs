@@ -6,15 +6,16 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PC_Protected_App
+namespace Tcp_S_R
 {
     class Tcp_S_R
     {
-        public string IP { get; set; } = "127.0.0.1";   //"192.168.100.3";
+        private static string defIp = "127.0.0.1";
+        public string IP { get; set; } = defIp;
         public int Port { get; set; } = 8001;
         public Tcp_S_R() { }
         public Tcp_S_R(string ip) : this(ip, 8001) { }
-        public Tcp_S_R(int port) : this("127.0.0.1", port) { }
+        public Tcp_S_R(int port) : this(defIp, port) { }
         public Tcp_S_R(string ip, int port)
         {
             IP = ip;
