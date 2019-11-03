@@ -20,7 +20,10 @@ namespace PC_Protected_App
 
         private void ReceiveLoop()
         {
-            label1.Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+            while (true)
+            {
+                label1.Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
