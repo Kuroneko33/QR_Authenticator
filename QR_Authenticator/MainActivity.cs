@@ -79,26 +79,26 @@ namespace QR_Authenticator
 
             if (id == Resource.Id.nav_camera)
             {
-                FindViewById<TextView>(Resource.Id.textView).Text = "Хуй";
+                FindViewById<TextView>(Resource.Id.textView).Text = "Тест1";
             }
             else if (id == Resource.Id.nav_gallery)
             {
-                FindViewById<TextView>(Resource.Id.textView).Text = "Хуй";
+                FindViewById<TextView>(Resource.Id.textView).Text = "Тест2";
             }
             else if (id == Resource.Id.nav_slideshow)
             {
-                FindViewById<TextView>(Resource.Id.textView).Text = "Хуй";
+                FindViewById<TextView>(Resource.Id.textView).Text = "Тест3";
             }
             else if (id == Resource.Id.nav_manage)
             {
-                FindViewById<TextView>(Resource.Id.textView).Text = "Хуй";
+                FindViewById<TextView>(Resource.Id.textView).Text = "Тест4";
             }
             else if (id == Resource.Id.nav_share)
             {
             }
             else if (id == Resource.Id.nav_send)
             {
-                new Tcp_S_R.Tcp_S_R("192.168.100.3").SendMessage(new DateTime().ToString("D"));
+                new Tcp_S_R.Tcp_S_R("192.168.100.3").SendMessage(DateTime.Now.ToString("D"));
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);

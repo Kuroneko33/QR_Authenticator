@@ -17,6 +17,7 @@ namespace PC_Protected_App
         {
             InitializeComponent();
         }
+
         Thread Receive;
         private void ReceiveThreadFunk()
         {
@@ -33,7 +34,7 @@ namespace PC_Protected_App
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            new Tcp_S_R.Tcp_S_R(/*"192.168.100.2"*/).SendMessage(richTextBox1.Text);
+            new Tcp_S_R.Tcp_S_R("192.168.100.2").SendMessage(richTextBox1.Text);
         }
 
         private void Button3_Click(object sender, EventArgs e)
