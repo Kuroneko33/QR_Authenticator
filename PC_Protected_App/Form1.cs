@@ -17,23 +17,28 @@ namespace PC_Protected_App
         {
             InitializeComponent();
         }
-
-        private void ReceiveLoop()
+        Thread Receive;
+        private void ReceiveThreadFunk()
         {
-            while (true)
-            {
-                label1.Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
-            }
+            if (label1.InvokeRequired) label1.Invoke(new Action<string>((s) => label1.Text = s), new Tcp_S_R.Tcp_S_R().ReceiveMessage());
+            else label1.Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            new Thread(new ThreadStart(ReceiveLoop)).Start();
+            Receive = new Thread(new ThreadStart(ReceiveThreadFunk));
+            Receive.Start();
+            //label1.Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             new Tcp_S_R.Tcp_S_R(/*"192.168.100.2"*/).SendMessage(richTextBox1.Text);
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
     }
 }
