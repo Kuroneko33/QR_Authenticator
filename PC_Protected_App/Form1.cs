@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,12 +25,12 @@ namespace PC_Protected_App
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            ReceiveLoop();
+            new Thread(new ThreadStart(ReceiveLoop)).Start();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            new Tcp_S_R.Tcp_S_R("192.168.100.2").SendMessage(richTextBox1.Text);
+            new Tcp_S_R.Tcp_S_R(/*"192.168.100.2"*/).SendMessage(richTextBox1.Text);
         }
     }
 }
