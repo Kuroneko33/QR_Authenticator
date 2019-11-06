@@ -95,10 +95,19 @@ namespace QR_Authenticator
             }
             else if (id == Resource.Id.nav_share)
             {
+                var scanner = new MobileBarcodeScanner();
+                var result = await scanner.Scan();
+
+                if (result == null) return;
+
+                results.Text = result.Text;
             }
             else if (id == Resource.Id.nav_send)
             {
-                new Tcp_S_R.Tcp_S_R("192.168.100.3").SendMessage(DateTime.Now.ToString("D"));
+                string ip_home = "192.168.100.3";
+                string ip_razdacha = "192.168.43.80";
+                string ip = ip_razdacha;
+                new Tcp_S_R.Tcp_S_R(ip).SendMessage(DateTime.Now.ToString("T"));
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
