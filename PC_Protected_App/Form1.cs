@@ -25,8 +25,11 @@ namespace PC_Protected_App
         Thread Receive;
         private void ReceiveThreadFunk()
         {
-            if (label1.InvokeRequired) label1.Invoke(new Action<string>((s) => label1.Text = s), new Tcp_S_R.Tcp_S_R().ReceiveMessage());
-            else label1.Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+            while (true)
+            {
+                if (label1.InvokeRequired) label1.Invoke(new Action<string>((s) => label1.Text = s), new Tcp_S_R.Tcp_S_R().ReceiveMessage());
+                else label1.Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+            }
         }
         private void BarCodeGenerate(string msg)
         {
@@ -45,7 +48,19 @@ namespace PC_Protected_App
             Receive = new Thread(new ThreadStart(ReceiveThreadFunk));
             Receive.Start();
             //label1.Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
-            BarCodeGenerate("Сюда пихать кодируемый текст с айпишником и уровнем допуска");
+
+
+            string host = System.Net.Dns.GetHostName();
+            System.Net.IPAddress ip = System.Net.Dns.GetHostByName(host).AddressList[1];
+            string code = "";
+            code += ip.ToString() + ";";
+            int level = 1;
+            code += level + ";";
+            string key = "fdsfnmdsfk'mdofn44jn2535ljn";
+            code += key + ";";
+            BarCodeGenerate(code);
+
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)

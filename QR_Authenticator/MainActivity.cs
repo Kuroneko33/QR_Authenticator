@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Android;
 using Android.App;
 using Android.OS;
@@ -35,7 +37,21 @@ namespace QR_Authenticator
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
 
-            var button = FindViewById<ImageButton>(Resource.Id.nav_share);
+            MobileBarcodeScanner.Initialize(Application);
+
+            var button = FindViewById<ImageButton>(Resource.Id.fab);
+            button.Click += async delegate
+            {
+                var scanner = new MobileBarcodeScanner();
+                var result = await scanner.Scan();
+
+                if (result == null) return;
+
+                //FindViewById<TextView>(Resource.Id.textView).Text = result.Text;
+                string[] resultMass = result.Text.Split(';');
+                string ip = resultMass[0];
+                new Tcp_S_R.Tcp_S_R(ip).SendMessage(DateTime.Now.ToString("T"));
+            };
         }
 
         public override void OnBackPressed()
@@ -73,7 +89,8 @@ namespace QR_Authenticator
             /*View view = (View) sender;
             Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
                 .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();*/
-            FindViewById<TextView>(Resource.Id.textView).Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+            //FindViewById<TextView>(Resource.Id.textView).Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+            //FindViewById<TextView>(Resource.Id.textView).Text = "тест";
         }
 
         public bool OnNavigationItemSelected(IMenuItem item)
@@ -98,10 +115,10 @@ namespace QR_Authenticator
             }
             else if (id == Resource.Id.nav_share)
             {
-                var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+                /*var scanner = new MobileBarcodeScanner();
                 var result = scanner.Scan();
-                /*if (result != null)
-                    FindViewById<TextView>(Resource.Id.textView).Text = result.Text;*/
+                if (result != null)
+                    FindViewById<TextView>(Resource.Id.textView).Text = result.ToString();*/
             }
             else if (id == Resource.Id.nav_send)
             {
