@@ -47,9 +47,14 @@ namespace QR_Authenticator
 
                 if (result == null) return;
 
-                //FindViewById<TextView>(Resource.Id.textView).Text = result.Text;
                 string[] resultMass = result.Text.Split(';');
-                string ip = resultMass[0];
+                string enctyptedIpStr = resultMass[0];
+                string key = resultMass[1];
+                LFSR ipProtection = new LFSR();
+                ipProtection.EnterKey(key);
+                string ip = ipProtection.Decrypt(enctyptedIpStr);
+
+                //отправка обратно информации типа фио в зашифрованном виде
                 new Tcp_S_R.Tcp_S_R(ip).SendMessage(DateTime.Now.ToString("T"));
             };
         }

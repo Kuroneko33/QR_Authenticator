@@ -52,6 +52,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent.cs" />
+    <Compile Include="Dossier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dossier.Designer.cs">
+      <DependentUpon>Dossier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DossierPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DossierPage.Designer.cs">
+      <DependentUpon>DossierPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Encryption.cs" />
     <Compile Include="Form0.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,9 +78,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LFSR.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tcp_S_R.cs" />
+    <EmbeddedResource Include="Dossier.resx">
+      <DependentUpon>Dossier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DossierPage.resx">
+      <DependentUpon>DossierPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form0.resx">
       <DependentUpon>Form0.cs</DependentUpon>
     </EmbeddedResource>
