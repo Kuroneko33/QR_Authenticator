@@ -3156,128 +3156,143 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
-			// aapt resource value: 0x7f020078
-			public const int avd_hide_password_1 = 2130837624;
+			// aapt resource value: 0x7f02007d
+			public const int avd_hide_password_1 = 2130837629;
 			
-			// aapt resource value: 0x7f020079
-			public const int avd_hide_password_2 = 2130837625;
+			// aapt resource value: 0x7f02007e
+			public const int avd_hide_password_2 = 2130837630;
 			
-			// aapt resource value: 0x7f02007a
-			public const int avd_hide_password_3 = 2130837626;
+			// aapt resource value: 0x7f02007f
+			public const int avd_hide_password_3 = 2130837631;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
-			// aapt resource value: 0x7f02007b
-			public const int avd_show_password_1 = 2130837627;
+			// aapt resource value: 0x7f020080
+			public const int avd_show_password_1 = 2130837632;
 			
-			// aapt resource value: 0x7f02007c
-			public const int avd_show_password_2 = 2130837628;
+			// aapt resource value: 0x7f020081
+			public const int avd_show_password_2 = 2130837633;
 			
-			// aapt resource value: 0x7f02007d
-			public const int avd_show_password_3 = 2130837629;
+			// aapt resource value: 0x7f020082
+			public const int avd_show_password_3 = 2130837634;
 			
 			// aapt resource value: 0x7f020056
-			public const int design_bottom_navigation_item_background = 2130837590;
+			public const int Coulson = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int design_fab_background = 2130837591;
+			public const int design_bottom_navigation_item_background = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int design_ic_visibility = 2130837592;
+			public const int design_fab_background = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int design_ic_visibility_off = 2130837593;
+			public const int design_ic_visibility = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int design_password_eye = 2130837594;
+			public const int design_ic_visibility_off = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int design_snackbar_background = 2130837595;
+			public const int design_password_eye = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_menu_camera = 2130837596;
+			public const int design_snackbar_background = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_menu_gallery = 2130837597;
+			public const int Fitz = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_menu_manage = 2130837598;
+			public const int ic_menu_camera = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int ic_menu_send = 2130837599;
+			public const int ic_menu_gallery = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int ic_menu_share = 2130837600;
+			public const int ic_menu_manage = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int ic_menu_slideshow = 2130837601;
+			public const int ic_menu_send = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int ic_mtrl_chip_checked_black = 2130837602;
+			public const int ic_menu_share = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int ic_mtrl_chip_checked_circle = 2130837603;
+			public const int ic_menu_slideshow = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int ic_mtrl_chip_close_circle = 2130837604;
+			public const int ic_mtrl_chip_checked_black = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int mtrl_snackbar_background = 2130837605;
+			public const int ic_mtrl_chip_checked_circle = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int mtrl_tabs_default_indicator = 2130837606;
+			public const int ic_mtrl_chip_close_circle = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int navigation_empty_icon = 2130837607;
+			public const int logo1 = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int notification_action_background = 2130837608;
+			public const int May = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int notification_bg = 2130837609;
+			public const int mtrl_snackbar_background = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int notification_bg_low = 2130837610;
+			public const int mtrl_tabs_default_indicator = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int notification_bg_low_normal = 2130837611;
+			public const int navigation_empty_icon = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int notification_bg_low_pressed = 2130837612;
+			public const int notification_action_background = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int notification_bg_normal = 2130837613;
+			public const int notification_bg = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int notification_bg_normal_pressed = 2130837614;
+			public const int notification_bg_low = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int notification_icon_background = 2130837615;
-			
-			// aapt resource value: 0x7f020076
-			public const int notification_template_icon_bg = 2130837622;
-			
-			// aapt resource value: 0x7f020077
-			public const int notification_template_icon_low_bg = 2130837623;
+			public const int notification_bg_low_normal = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int notification_tile_bg = 2130837616;
+			public const int notification_bg_low_pressed = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int notify_panel_notification_icon_bg = 2130837617;
+			public const int notification_bg_normal = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int qr_code = 2130837618;
+			public const int notification_bg_normal_pressed = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int side_nav_bar = 2130837619;
+			public const int notification_icon_background = 2130837619;
+			
+			// aapt resource value: 0x7f02007b
+			public const int notification_template_icon_bg = 2130837627;
+			
+			// aapt resource value: 0x7f02007c
+			public const int notification_template_icon_low_bg = 2130837628;
 			
 			// aapt resource value: 0x7f020074
-			public const int tooltip_frame_dark = 2130837620;
+			public const int notification_tile_bg = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int tooltip_frame_light = 2130837621;
+			public const int notify_panel_notification_icon_bg = 2130837621;
+			
+			// aapt resource value: 0x7f020076
+			public const int qr_code = 2130837622;
+			
+			// aapt resource value: 0x7f020077
+			public const int side_nav_bar = 2130837623;
+			
+			// aapt resource value: 0x7f020078
+			public const int Sky = 2130837624;
+			
+			// aapt resource value: 0x7f020079
+			public const int tooltip_frame_dark = 2130837625;
+			
+			// aapt resource value: 0x7f02007a
+			public const int tooltip_frame_light = 2130837626;
 			
 			static Drawable()
 			{
@@ -3310,8 +3325,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a003e
 			public const int SYM = 2131361854;
 			
-			// aapt resource value: 0x7f0a00b7
-			public const int action0 = 2131361975;
+			// aapt resource value: 0x7f0a00b8
+			public const int action0 = 2131361976;
 			
 			// aapt resource value: 0x7f0a008d
 			public const int action_bar = 2131361933;
@@ -3334,17 +3349,17 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0069
 			public const int action_bar_title = 2131361897;
 			
-			// aapt resource value: 0x7f0a00b4
-			public const int action_container = 2131361972;
+			// aapt resource value: 0x7f0a00b5
+			public const int action_container = 2131361973;
 			
 			// aapt resource value: 0x7f0a008e
 			public const int action_context_bar = 2131361934;
 			
-			// aapt resource value: 0x7f0a00bb
-			public const int action_divider = 2131361979;
+			// aapt resource value: 0x7f0a00bc
+			public const int action_divider = 2131361980;
 			
-			// aapt resource value: 0x7f0a00b5
-			public const int action_image = 2131361973;
+			// aapt resource value: 0x7f0a00b6
+			public const int action_image = 2131361974;
 			
 			// aapt resource value: 0x7f0a0003
 			public const int action_menu_divider = 2131361795;
@@ -3361,14 +3376,14 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a006b
 			public const int action_mode_close_button = 2131361899;
 			
-			// aapt resource value: 0x7f0a00d0
-			public const int action_settings = 2131362000;
+			// aapt resource value: 0x7f0a00cf
+			public const int action_settings = 2131361999;
 			
-			// aapt resource value: 0x7f0a00b6
-			public const int action_text = 2131361974;
+			// aapt resource value: 0x7f0a00b7
+			public const int action_text = 2131361975;
 			
-			// aapt resource value: 0x7f0a00c4
-			public const int actions = 2131361988;
+			// aapt resource value: 0x7f0a00c5
+			public const int actions = 2131361989;
 			
 			// aapt resource value: 0x7f0a006c
 			public const int activity_chooser_view_content = 2131361900;
@@ -3418,8 +3433,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0072
 			public const int buttonPanel = 2131361906;
 			
-			// aapt resource value: 0x7f0a00b8
-			public const int cancel_action = 2131361976;
+			// aapt resource value: 0x7f0a00b9
+			public const int cancel_action = 2131361977;
 			
 			// aapt resource value: 0x7f0a004c
 			public const int center = 2131361868;
@@ -3433,8 +3448,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0086
 			public const int checkbox = 2131361926;
 			
-			// aapt resource value: 0x7f0a00c0
-			public const int chronometer = 2131361984;
+			// aapt resource value: 0x7f0a00c1
+			public const int chronometer = 2131361985;
 			
 			// aapt resource value: 0x7f0a0061
 			public const int clip_horizontal = 2131361889;
@@ -3451,8 +3466,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0082
 			public const int content = 2131361922;
 			
-			// aapt resource value: 0x7f0a00c7
-			public const int contentFrame = 2131361991;
+			// aapt resource value: 0x7f0a00c8
+			public const int contentFrame = 2131361992;
 			
 			// aapt resource value: 0x7f0a0075
 			public const int contentPanel = 2131361909;
@@ -3499,8 +3514,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0037
 			public const int end = 2131361847;
 			
-			// aapt resource value: 0x7f0a00c6
-			public const int end_padder = 2131361990;
+			// aapt resource value: 0x7f0a00c7
+			public const int end_padder = 2131361991;
 			
 			// aapt resource value: 0x7f0a0046
 			public const int enterAlways = 2131361862;
@@ -3553,8 +3568,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0071
 			public const int icon = 2131361905;
 			
-			// aapt resource value: 0x7f0a00c5
-			public const int icon_group = 2131361989;
+			// aapt resource value: 0x7f0a00c6
+			public const int icon_group = 2131361990;
 			
 			// aapt resource value: 0x7f0a0041
 			public const int ifRoom = 2131361857;
@@ -3565,8 +3580,11 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a00b3
 			public const int imageView = 2131361971;
 			
-			// aapt resource value: 0x7f0a00c1
-			public const int info = 2131361985;
+			// aapt resource value: 0x7f0a00a6
+			public const int imageView1 = 2131361958;
+			
+			// aapt resource value: 0x7f0a00c2
+			public const int info = 2131361986;
 			
 			// aapt resource value: 0x7f0a0068
 			public const int italic = 2131361896;
@@ -3595,11 +3613,11 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0070
 			public const int list_item = 2131361904;
 			
-			// aapt resource value: 0x7f0a00c9
-			public const int masked = 2131361993;
+			// aapt resource value: 0x7f0a00ca
+			public const int masked = 2131361994;
 			
-			// aapt resource value: 0x7f0a00ba
-			public const int media_actions = 2131361978;
+			// aapt resource value: 0x7f0a00bb
+			public const int media_actions = 2131361979;
 			
 			// aapt resource value: 0x7f0a009c
 			public const int message = 2131361948;
@@ -3619,23 +3637,17 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a002f
 			public const int multiply = 2131361839;
 			
-			// aapt resource value: 0x7f0a00ca
-			public const int nav_camera = 2131361994;
-			
 			// aapt resource value: 0x7f0a00cb
-			public const int nav_gallery = 2131361995;
-			
-			// aapt resource value: 0x7f0a00cd
-			public const int nav_manage = 2131361997;
-			
-			// aapt resource value: 0x7f0a00cf
-			public const int nav_send = 2131361999;
-			
-			// aapt resource value: 0x7f0a00ce
-			public const int nav_share = 2131361998;
+			public const int nav_camera = 2131361995;
 			
 			// aapt resource value: 0x7f0a00cc
-			public const int nav_slideshow = 2131361996;
+			public const int nav_gallery = 2131361996;
+			
+			// aapt resource value: 0x7f0a00ce
+			public const int nav_manage = 2131361998;
+			
+			// aapt resource value: 0x7f0a00cd
+			public const int nav_slideshow = 2131361997;
 			
 			// aapt resource value: 0x7f0a009e
 			public const int nav_view = 2131361950;
@@ -3652,14 +3664,14 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0025
 			public const int normal = 2131361829;
 			
-			// aapt resource value: 0x7f0a00c3
-			public const int notification_background = 2131361987;
+			// aapt resource value: 0x7f0a00c4
+			public const int notification_background = 2131361988;
+			
+			// aapt resource value: 0x7f0a00be
+			public const int notification_main_column = 2131361982;
 			
 			// aapt resource value: 0x7f0a00bd
-			public const int notification_main_column = 2131361981;
-			
-			// aapt resource value: 0x7f0a00bc
-			public const int notification_main_column_container = 2131361980;
+			public const int notification_main_column_container = 2131361981;
 			
 			// aapt resource value: 0x7f0a0060
 			public const int outline = 2131361888;
@@ -3688,11 +3700,11 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0055
 			public const int right = 2131361877;
 			
-			// aapt resource value: 0x7f0a00c2
-			public const int right_icon = 2131361986;
+			// aapt resource value: 0x7f0a00c3
+			public const int right_icon = 2131361987;
 			
-			// aapt resource value: 0x7f0a00be
-			public const int right_side = 2131361982;
+			// aapt resource value: 0x7f0a00bf
+			public const int right_side = 2131361983;
 			
 			// aapt resource value: 0x7f0a000c
 			public const int save_image_matrix = 2131361804;
@@ -3802,8 +3814,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a0056
 			public const int start = 2131361878;
 			
-			// aapt resource value: 0x7f0a00b9
-			public const int status_bar_latest_event_content = 2131361977;
+			// aapt resource value: 0x7f0a00ba
+			public const int status_bar_latest_event_content = 2131361978;
 			
 			// aapt resource value: 0x7f0a005b
 			public const int stretch = 2131361883;
@@ -3841,8 +3853,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a005a
 			public const int textStart = 2131361882;
 			
-			// aapt resource value: 0x7f0a00a6
-			public const int textView = 2131361958;
+			// aapt resource value: 0x7f0a00b4
+			public const int textView = 2131361972;
 			
 			// aapt resource value: 0x7f0a00b2
 			public const int text_input_password_toggle = 2131361970;
@@ -3856,8 +3868,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a001a
 			public const int textinput_helper_text = 2131361818;
 			
-			// aapt resource value: 0x7f0a00bf
-			public const int time = 2131361983;
+			// aapt resource value: 0x7f0a00c0
+			public const int time = 2131361984;
 			
 			// aapt resource value: 0x7f0a0023
 			public const int title = 2131361827;
@@ -3910,8 +3922,8 @@ namespace QR_Authenticator
 			// aapt resource value: 0x7f0a001b
 			public const int view_offset_helper = 2131361819;
 			
-			// aapt resource value: 0x7f0a00c8
-			public const int visible = 2131361992;
+			// aapt resource value: 0x7f0a00c9
+			public const int visible = 2131361993;
 			
 			// aapt resource value: 0x7f0a0043
 			public const int withText = 2131361859;

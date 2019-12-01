@@ -18,6 +18,7 @@ namespace QR_Authenticator
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
+        string Agent = "Скай";
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -39,6 +40,9 @@ namespace QR_Authenticator
 
             MobileBarcodeScanner.Initialize(Application);
 
+            Agent = "Скай";
+            FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(Resource.Drawable.Sky);
+
             var button = FindViewById<ImageButton>(Resource.Id.fab);
             button.Click += async delegate
             {
@@ -47,15 +51,37 @@ namespace QR_Authenticator
 
                 if (result == null) return;
 
-                string[] resultMass = result.Text.Split(';');
-                string enctyptedIpStr = resultMass[0];
-                string key = resultMass[1];
-                LFSR ipProtection = new LFSR();
-                ipProtection.EnterKey(key);
-                string ip = ipProtection.Decrypt(enctyptedIpStr);
+                string ip = result.Text;
 
-                //отправка обратно информации типа фио в зашифрованном виде
-                new Tcp_S_R.Tcp_S_R(ip).SendMessage(DateTime.Now.ToString("T"));
+                string[] randStrs = {"fdytrtfv", "dcdsvsd", "sdasxcwfw", "jult,", "ascsdcr", "yujtytr", "ecl,", "i;remcd", "mkfwec", "sa;xlz,"};  
+                string LastName = Agent;
+                string mess = "";
+                Random rnd = new Random();
+                for (int i = 0; i < randStrs.Length; i++)
+                {
+                    if (i==7)
+                    {
+                        mess += LastName;
+                    }
+                    else
+                    {
+                        mess += randStrs[rnd.Next(randStrs.Length)];
+                    }
+                    mess += ":";
+                }
+                LFSR messProtection = new LFSR();
+                string key = messProtection.GenerateKey();
+                string enctyptedMess = messProtection.Encrypt(mess);
+
+                messProtection.EnterKey(key);
+                string dectyptedMess = messProtection.Decrypt(enctyptedMess);
+
+                //enctyptedMess += " " + key;
+                //new Tcp_S_R.Tcp_S_R(ip).SendMessage(DateTime.Now.ToString("T"));
+                new Tcp_S_R.Tcp_S_R(ip).SendMessage(enctyptedMess);
+                new Tcp_S_R.Tcp_S_R(ip).SendMessage(enctyptedMess.Length.ToString());
+                new Tcp_S_R.Tcp_S_R(ip).SendMessage(key);
+                new Tcp_S_R.Tcp_S_R(ip).SendMessage(key.Length.ToString());
             };
         }
 
@@ -94,9 +120,9 @@ namespace QR_Authenticator
             /*View view = (View) sender;
             Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
                 .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();*/
-            //FindViewById<TextView>(Resource.Id.textView).Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
-            //FindViewById<TextView>(Resource.Id.textView).Text = "тест";
-        }
+                //FindViewById<TextView>(Resource.Id.textView).Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+                //FindViewById<TextView>(Resource.Id.textView).Text = "тест";
+            }
 
         public bool OnNavigationItemSelected(IMenuItem item)
         {
@@ -104,33 +130,23 @@ namespace QR_Authenticator
 
             if (id == Resource.Id.nav_camera)
             {
-                FindViewById<TextView>(Resource.Id.textView).Text = "Тест1";
+                Agent = "Скай";
+                FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(Resource.Drawable.Sky);
             }
             else if (id == Resource.Id.nav_gallery)
             {
-                FindViewById<TextView>(Resource.Id.textView).Text = "Тест2";
+                Agent = "Фитц";
+                FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(Resource.Drawable.Fitz);
             }
             else if (id == Resource.Id.nav_slideshow)
             {
-                FindViewById<TextView>(Resource.Id.textView).Text = "Тест3";
+                Agent = "Мэй";
+                FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(Resource.Drawable.May);
             }
             else if (id == Resource.Id.nav_manage)
             {
-                FindViewById<TextView>(Resource.Id.textView).Text = "Тест4";
-            }
-            else if (id == Resource.Id.nav_share)
-            {
-                /*var scanner = new MobileBarcodeScanner();
-                var result = scanner.Scan();
-                if (result != null)
-                    FindViewById<TextView>(Resource.Id.textView).Text = result.ToString();*/
-            }
-            else if (id == Resource.Id.nav_send)
-            {
-                string ip_home = "192.168.100.3";
-                string ip_razdacha = "192.168.43.80";
-                string ip = ip_home;
-                new Tcp_S_R.Tcp_S_R(ip).SendMessage(DateTime.Now.ToString("T"));
+                Agent = "Колсон";
+                FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(Resource.Drawable.Coulson);
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);

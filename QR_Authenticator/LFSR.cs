@@ -54,7 +54,7 @@ namespace QR_Authenticator
 
         private void GenerateSpectrum(string text)
         {
-            byte[] textInBytes = Encoding.Default.GetBytes(text);
+            byte[] textInBytes = Portable.Text.Encoding.GetEncoding(1251).GetBytes(text);
             int textBitLength = textInBytes.Length * 8;
             Spectrum = new BitArray(textBitLength);
             BitArray LFSR2 = new BitArray(LFSR1);
@@ -94,7 +94,7 @@ namespace QR_Authenticator
         public string Encrypt(string text)
         {
             GenerateSpectrum(text);
-            byte[] textInBytes = Encoding.Default.GetBytes(text);
+            byte[] textInBytes = Portable.Text.Encoding.GetEncoding(1251).GetBytes(text);
             int textBitLength = textInBytes.Length * 8;
             BitArray textInBits = new BitArray(textInBytes);
             BitArray codedTextInBits = new BitArray(textBitLength);
@@ -109,14 +109,20 @@ namespace QR_Authenticator
                     codedTextInBits[i] = false;
                 }
             }
+
             byte[] codedTextInByts = BitArrayToByteArray(codedTextInBits);
-            string codedTextInStr = Encoding.Default.GetString(codedTextInByts);
+            string codedTextInStr = Portable.Text.Encoding.GetEncoding(1251).GetString(codedTextInByts, 0, codedTextInByts.Length);
+
+            string decodedTextInStr = Portable.Text.Encoding.GetEncoding(1251).GetString(textInBytes);
+            byte[] codedTextInByts1231 = Portable.Text.Encoding.GetEncoding(1251).GetBytes(BitArrToStr(codedTextInBits));
+            byte[] textInBytes1 = BitArrayToByteArray(textInBits);
+
             return codedTextInStr;
         }
         public string Decrypt(string text)
         {
             GenerateSpectrum(text);
-            byte[] codedTextInByts = Encoding.Default.GetBytes(text);
+            byte[] codedTextInByts = Portable.Text.Encoding.GetEncoding(1251).GetBytes(text);
             BitArray newCodedTextInBits = new BitArray(codedTextInByts);
             BitArray decodedTextInBits = new BitArray(codedTextInByts);
 
@@ -132,7 +138,7 @@ namespace QR_Authenticator
                 }
             }
             byte[] decodedTextInByts = BitArrayToByteArray(decodedTextInBits);
-            string decodedTextInStr = Encoding.Default.GetString(decodedTextInByts);
+            string decodedTextInStr = Portable.Text.Encoding.GetEncoding(1251).GetString(decodedTextInByts, 0, decodedTextInByts.Length);
             return decodedTextInStr;
         }
 

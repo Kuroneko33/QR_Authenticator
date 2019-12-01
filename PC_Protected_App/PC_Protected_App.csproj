@@ -65,7 +65,6 @@
     <Compile Include="DossierPage.Designer.cs">
       <DependentUpon>DossierPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Encryption.cs" />
     <Compile Include="Form0.cs">
       <SubType>Form</SubType>
     </Compile>

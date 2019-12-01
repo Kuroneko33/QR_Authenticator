@@ -80,8 +80,12 @@ namespace PC_Protected_App
         Thread Receive;
         private void ReceiveThreadFunk()
         {
-            string mess = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
-            
+            string enctyptedMess = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+            string enctyptedMessLength = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+            string key = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+            string keyLength = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+            enctyptedMess = enctyptedMess.Substring(0, Int32.Parse(enctyptedMessLength));
+            key = key.Substring(0, Int32.Parse(keyLength));
             if (pictureBox1.InvokeRequired) pictureBox1.Invoke(new Action<bool>((s) => pictureBox1.Visible = s), false);
             else pictureBox1.Visible = false;
             if (label1.InvokeRequired) label1.Invoke(new Action<bool>((s) => label1.Visible = s), false);
@@ -90,7 +94,29 @@ namespace PC_Protected_App
             else label1.Visible = false;
 
             //Разделение сообщения mess на части, вызов шифрования и т.д.
-            Agent agent = agentMay;
+            LFSR messProtection = new LFSR();
+            messProtection.EnterKey(key);
+            string dectyptedMess = messProtection.Decrypt(enctyptedMess);
+            string[] messArr = dectyptedMess.Split(new char[] { ':' });
+            string agentStr = messArr[7];
+
+            Agent agent = agentSky;
+            if (agentStr == "Скай")
+            {
+                agent = agentSky;
+            }
+            else if (agentStr == "Фитц")
+            {
+                agent = agentFitz;
+            }
+            else if (agentStr == "Мэй")
+            {
+                agent = agentMay;
+            }
+            else if (agentStr == "Колсон")
+            {
+                agent = agentCoulson;
+            }
             AccessLevel = agent.AccessLevel;
             string user = "";
             user = agent.FullName;
@@ -132,21 +158,11 @@ namespace PC_Protected_App
             clickedButton.Visible = false;
             string host = System.Net.Dns.GetHostName();
             System.Net.IPAddress ip = System.Net.Dns.GetHostByName(host).AddressList[1];
-            LFSR ipProtection = new LFSR();
-            string key = ipProtection.GenerateKey();
             string ipStr = ip.ToString();
-            string enctyptedIpStr = ipProtection.Encrypt(ipStr);
-            ipProtection.EnterKey(key);
-            string dectyptedIpStr = ipProtection.Decrypt(enctyptedIpStr);
-
-            string code = "";
-            code += enctyptedIpStr + ";";
-            code += key;
-
+            string code = ipStr;
             pictureBox1.Visible = true;
             label1.Visible = true;
             BarCodeGenerate(code);
-            
             Receive = new Thread(new ThreadStart(ReceiveThreadFunk));
             Receive.Start();
         }
