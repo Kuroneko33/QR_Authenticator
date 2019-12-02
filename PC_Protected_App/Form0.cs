@@ -24,13 +24,14 @@ namespace PC_Protected_App
 
         Dictionary<string,Bitmap> mainMenuPics = new Dictionary<string,Bitmap>();
         List<string> mainMenuPicsPath = new List<string>();
-        string[] mainMenuPicsNames = new string[6];
+        string[] mainMenuPicsNames = new string[7];
         string OS_UI_NoTarget = "OS_UI_NoTarget";
         string OS_UI_Досье = "OS_UI_Досье";
         string OS_UI_Миссии = "OS_UI_Миссии";
         string OS_UI_Артефакты = "OS_UI_Артефакты";
         string OS_UI_Разработки = "OS_UI_Разработки";
         string OS_UI_Управление_кораблём = "OS_UI_Управление кораблём";
+        string OS_UI_Выход = "OS_UI_Выход";
         bool LoadingFinished = false;
         Dictionary<string,Bitmap> greetingAgentsPics = new Dictionary<string,Bitmap>();
         List<string> greetingAgentsPicsPath = new List<string>();
@@ -46,20 +47,26 @@ namespace PC_Protected_App
         Agent agentFitz = new Agent("Леопольд", "Джеймс", "Фитц", 2);
         Agent agentMay = new Agent("Мелинда", "Кьаолиан", "Мэй", 3);
         Agent agentCoulson = new Agent("Филлип", "Джей", "Колсон", 4);
-
+        Agent agent;
         int AccessLevel = 1;
+        string user = "";
+        Button button1;
+
         public Form0()
         {
             InitializeComponent();
         }
         private void Form0_Load(object sender, EventArgs e)
         {
+            pictureBox5.Visible = false;
+            this.FormClosing += MyForm_Closing;
             mainMenuPicsNames[0] = OS_UI_NoTarget;
             mainMenuPicsNames[1] = OS_UI_Досье;
             mainMenuPicsNames[2] = OS_UI_Миссии;
             mainMenuPicsNames[3] = OS_UI_Артефакты;
             mainMenuPicsNames[4] = OS_UI_Разработки;
             mainMenuPicsNames[5] = OS_UI_Управление_кораблём;
+            mainMenuPicsNames[6] = OS_UI_Выход;
             for (int i = 0; i < mainMenuPicsNames.Length; i++)
             {
                 mainMenuPicsPath.Add(basicPath + imgPath + mainMenuPicsNames[i] + basicImgExt);
@@ -80,53 +87,57 @@ namespace PC_Protected_App
         Thread Receive;
         private void ReceiveThreadFunk()
         {
-            string enctyptedMess = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
-            string enctyptedMessLength = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
-            string key = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
-            string keyLength = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
-            enctyptedMess = enctyptedMess.Substring(0, Int32.Parse(enctyptedMessLength));
-            key = key.Substring(0, Int32.Parse(keyLength));
-            if (pictureBox1.InvokeRequired) pictureBox1.Invoke(new Action<bool>((s) => pictureBox1.Visible = s), false);
-            else pictureBox1.Visible = false;
-            if (label1.InvokeRequired) label1.Invoke(new Action<bool>((s) => label1.Visible = s), false);
-            else label1.Visible = false;
-            if (label1.InvokeRequired) label1.Invoke(new Action<bool>((s) => label1.Visible = s), false);
-            else label1.Visible = false;
-
-            //Разделение сообщения mess на части, вызов шифрования и т.д.
-            LFSR messProtection = new LFSR();
-            messProtection.EnterKey(key);
-            string dectyptedMess = messProtection.Decrypt(enctyptedMess);
-            string[] messArr = dectyptedMess.Split(new char[] { ':' });
-            string agentStr = messArr[7];
-
-            Agent agent = agentSky;
-            if (agentStr == "Скай")
+            try
             {
+                string enctyptedMess = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+                string enctyptedMessLength = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+                string key = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+                string keyLength = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
+                enctyptedMess = enctyptedMess.Substring(0, Int32.Parse(enctyptedMessLength));
+                key = key.Substring(0, Int32.Parse(keyLength));
+                if (pictureBox1.InvokeRequired) pictureBox1.Invoke(new Action<bool>((s) => pictureBox1.Visible = s), false);
+                else pictureBox1.Visible = false;
+                if (label1.InvokeRequired) label1.Invoke(new Action<bool>((s) => label1.Visible = s), false);
+                else label1.Visible = false;
+
+                //Разделение сообщения mess на части, вызов шифрования и т.д.
+                LFSR messProtection = new LFSR();
+                messProtection.EnterKey(key);
+                string dectyptedMess = messProtection.Decrypt(enctyptedMess);
+                string[] messArr = dectyptedMess.Split(new char[] { ':' });
+                string agentStr = messArr[7];
+
                 agent = agentSky;
-            }
-            else if (agentStr == "Фитц")
-            {
-                agent = agentFitz;
-            }
-            else if (agentStr == "Мэй")
-            {
-                agent = agentMay;
-            }
-            else if (agentStr == "Колсон")
-            {
-                agent = agentCoulson;
-            }
-            AccessLevel = agent.AccessLevel;
-            string user = "";
-            user = agent.FullName;
-            UserLoad(user);
-            Thread.Sleep(500/*2000*/);
-            pictureBox3.Invoke(new Action<bool>((s) => pictureBox3.Visible = s), false);
-            LoadingFinished = true;
+                if (agentStr == "Скай")
+                {
+                    agent = agentSky;
+                }
+                else if (agentStr == "Фитц")
+                {
+                    agent = agentFitz;
+                }
+                else if (agentStr == "Мэй")
+                {
+                    agent = agentMay;
+                }
+                else if (agentStr == "Колсон")
+                {
+                    agent = agentCoulson;
+                }
+                AccessLevel = agent.AccessLevel;
+                user = "";
+                user = agent.FullName;
+                UserLoad(user);
+                Thread.Sleep(2000);
+                pictureBox3.Invoke(new Action<bool>((s) => pictureBox3.Visible = s), false);
+                LoadingFinished = true;
 
-            if (pictureBox2.InvokeRequired) pictureBox2.Invoke(new Action<bool>((s) => pictureBox2.Visible = s), true);
-            else pictureBox2.Visible = true;
+                if (pictureBox2.InvokeRequired) pictureBox2.Invoke(new Action<bool>((s) => pictureBox2.Visible = s), true);
+                else pictureBox2.Visible = true;
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void UserLoad(string user)
@@ -152,10 +163,11 @@ namespace PC_Protected_App
             pictureBox3.Invoke(new Action<bool>((s) => pictureBox3.Visible = s), true);
         }
 
+        [Obsolete]
         private void Button1_Click(object sender, EventArgs e)//кнопка входа
         {
-            Button clickedButton = (Button)sender;
-            clickedButton.Visible = false;
+            button1 = (Button)sender;
+            button1.Visible = false;
             string host = System.Net.Dns.GetHostName();
             System.Net.IPAddress ip = System.Net.Dns.GetHostByName(host).AddressList[1];
             string ipStr = ip.ToString();
@@ -177,11 +189,6 @@ namespace PC_Protected_App
             Bitmap qrCode = barcodeWriter.Write(msg);
             pictureBox1.Image = qrCode;
         }
-        private void StartForm1()
-        {
-            Form f1 = new Form1();
-            f1.Show();
-        }
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
@@ -192,28 +199,59 @@ namespace PC_Protected_App
             Console.WriteLine(CursorX + " " + CursorY);
             if (CursorX > 130 && CursorX < 220 && CursorY > 70 && CursorY < 200)
             {
-                Console.WriteLine(CursorX + " ! " + CursorY);
-                Dossier dossier = new Dossier(AccessLevel);
+                Dossier dossier = new Dossier(AccessLevel, "Досье");
                 dossier.Show();
             }
             else if (CursorX > 125 && CursorX < 224 && CursorY > 290 && CursorY < 425)
             {
-                Console.WriteLine(CursorX + " ! " + CursorY);
+                Dossier missions = new Dossier(AccessLevel, "Миссии");
+                missions.Show();
             }
             else if ((CursorX > 625 && CursorX < 705 && CursorY > 80 && CursorY < 180) ||
                     (CursorX > 590 && CursorX < 740 && CursorY > 180 && CursorY < 205))
             {
-                Console.WriteLine(CursorX + " ! " + CursorY);
+                Dossier artifacts = new Dossier(AccessLevel, "Артефакты");
+                artifacts.Show();
             }
             else if ((CursorX > 625 && CursorX < 710 && CursorY > 295 && CursorY < 400) ||
                     (CursorX > 595 && CursorX < 750 && CursorY > 400 && CursorY < 425))
             {
-                Console.WriteLine(CursorX + " ! " + CursorY);
+                Dossier development = new Dossier(AccessLevel, "Разработки");
+                development.Show();
             }
-            else if ((CursorX > 385 && CursorX < 455 && CursorY > 190 && CursorY < 285) ||
-                    (CursorX > 280 && CursorX < 570 && CursorY > 285 && CursorY < 315))
+            else if ((CursorX > 390 && CursorX < 460 && CursorY > 165 && CursorY < 260) ||
+                    (CursorX > 285 && CursorX < 580 && CursorY > 260 && CursorY < 290))
             {
-                Console.WriteLine(CursorX + " ! " + CursorY);
+                int SleepTime = 1500;
+                if (agent == agentMay)
+                {
+                    pictureBox5.BackgroundImage = new Bitmap(basicPath + imgPath + "ДоступРазрешён" + basicImgExt);
+                    pictureBox5.Visible = true;
+                    Task.Factory.StartNew(() =>
+                    {
+                        Thread.Sleep(SleepTime);
+                        pictureBox5.Invoke(new Action<bool>((s) => pictureBox5.Visible = s), false);
+                    });
+                    Control_Panel control_Panel = new Control_Panel();
+                    control_Panel.Show();
+                }
+                else
+                {
+                    pictureBox5.BackgroundImage = new Bitmap(basicPath + imgPath + "ДоступЗапрещён" + basicImgExt);
+                    pictureBox5.Visible = true;
+                    Task.Factory.StartNew(() =>
+                    {
+                        Thread.Sleep(SleepTime);
+                        pictureBox5.Invoke(new Action<bool>((s) => pictureBox5.Visible = s), false);
+                    });
+                }
+            }
+            else if (CursorX > 510 && CursorX < 595 && CursorY > 465 && CursorY < 585)
+            {
+                button1.Visible = true;
+                pictureBox1.Visible = false;
+                label1.Visible = false;
+                pictureBox2.Visible = false;
             }
         }
 
@@ -241,15 +279,24 @@ namespace PC_Protected_App
             {
                 pictureBox2.BackgroundImage = mainMenuPics[OS_UI_Разработки];
             }
-            else if ((CursorX > 385 && CursorX < 455 && CursorY > 190 && CursorY < 285) ||
-                    (CursorX > 280 && CursorX < 570 && CursorY > 285 && CursorY < 315))
+            else if ((CursorX > 390 && CursorX < 460 && CursorY > 165 && CursorY < 260) ||
+                    (CursorX > 285 && CursorX < 580 && CursorY > 260 && CursorY < 290))
             {
                 pictureBox2.BackgroundImage = mainMenuPics[OS_UI_Управление_кораблём];
+            }
+            else if (CursorX > 510 && CursorX < 595 && CursorY > 465 && CursorY < 585)
+            {
+                pictureBox2.BackgroundImage = mainMenuPics[OS_UI_Выход];
             }
             else
             {
                 pictureBox2.BackgroundImage = mainMenuPics[OS_UI_NoTarget];
             }
+        }
+        private void MyForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;   
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
     }
 }

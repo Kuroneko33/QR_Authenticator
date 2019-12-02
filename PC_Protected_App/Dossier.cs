@@ -13,6 +13,7 @@ namespace PC_Protected_App
 {
     public partial class Dossier : Form
     {
+
         int AccessLevel;
         string basicPath = @"../../";
         string imgPath = @"Images/";
@@ -20,29 +21,61 @@ namespace PC_Protected_App
         Dictionary<string, Bitmap> dossierMenuPics = new Dictionary<string, Bitmap>();
         List<string> dossierMenuPicsPath = new List<string>();
         string[] dossierMenuPicsNames = new string[7];
-        string ДосьеМенюКолсон = "ДосьеМенюКолсон";
-        string ДосьеМенюМэй = "ДосьеМенюМэй";
-        string ДосьеМенюСкай = "ДосьеМенюСкай";
-        string ДосьеМенюФитц = "ДосьеМенюФитц";
-        string ДосьеМенюНеизвестный2Уровень = "ДосьеМенюНеизвестный2Уровень";
-        string ДосьеМенюНеизвестный3Уровень = "ДосьеМенюНеизвестный3Уровень";
-        string ДосьеМенюНеизвестный4Уровень = "ДосьеМенюНеизвестный4Уровень";
+        string type = "";
         Dictionary<string, Bitmap> dossierMenuPicsForThisLevel = new Dictionary<string, Bitmap>();
-        public Dossier(int accessLevel)
+        public Dossier(int accessLevel, string type)
         {
             InitializeComponent();
             AccessLevel = accessLevel;
+            this.type = type;
+            this.Text = type;
         }
 
         private void Dossier_Load(object sender, EventArgs e)
         {
-            dossierMenuPicsNames[0] = ДосьеМенюКолсон;
-            dossierMenuPicsNames[1] = ДосьеМенюМэй;
-            dossierMenuPicsNames[2] = ДосьеМенюСкай;
-            dossierMenuPicsNames[3] = ДосьеМенюФитц;
-            dossierMenuPicsNames[4] = ДосьеМенюНеизвестный2Уровень;
-            dossierMenuPicsNames[5] = ДосьеМенюНеизвестный3Уровень;
-            dossierMenuPicsNames[6] = ДосьеМенюНеизвестный4Уровень;
+            if (type == "Досье")
+            {
+                dossierMenuPicsNames[0] = "ДосьеМенюСкай";
+                dossierMenuPicsNames[1] = "ДосьеМенюФитц";
+                dossierMenuPicsNames[2] = "ДосьеМенюМэй";
+                dossierMenuPicsNames[3] = "ДосьеМенюКолсон";
+                dossierMenuPicsNames[4] = "ДосьеМенюНеизвестный2Уровень";
+                dossierMenuPicsNames[5] = "ДосьеМенюНеизвестный3Уровень";
+                dossierMenuPicsNames[6] = "ДосьеМенюНеизвестный4Уровень";
+            }
+            else if (type == "Миссии")
+            {
+                dossierMenuPicsNames[0] = "МстителиМеню";
+                dossierMenuPicsNames[1] = "МстителиВБМеню";
+                dossierMenuPicsNames[2] = "МстителиЭАМеню";
+                dossierMenuPicsNames[3] = "МстителиФиналМеню";
+                dossierMenuPicsNames[4] = "Требуется2Уровень";
+                dossierMenuPicsNames[5] = "Требуется3Уровень";
+                dossierMenuPicsNames[6] = "Требуется4Уровень";
+            }
+            else if (type == "Артефакты")
+            {
+                dossierMenuPicsNames[0] = "МьёльнирМеню";
+                dossierMenuPicsNames[1] = "СекираМеню";
+                dossierMenuPicsNames[2] = "ГлазМеню";
+                dossierMenuPicsNames[3] = "ТессерактМеню";
+                dossierMenuPicsNames[4] = "Требуется2Уровень";
+                dossierMenuPicsNames[5] = "Требуется3Уровень";
+                dossierMenuPicsNames[6] = "Требуется4Уровень";
+            }
+            else if (type == "Разработки")
+            {
+                dossierMenuPicsNames[0] = "ЩитМеню";
+                dossierMenuPicsNames[1] = "ПерчаткаЖЧМеню";
+                dossierMenuPicsNames[2] = "ПаукМеню";
+                dossierMenuPicsNames[3] = "КвантМеню";
+                dossierMenuPicsNames[4] = "Требуется2Уровень";
+                dossierMenuPicsNames[5] = "Требуется3Уровень";
+                dossierMenuPicsNames[6] = "Требуется4Уровень";
+            }
+
+
+
             for (int i = 0; i < dossierMenuPicsNames.Length; i++)
             {
                 dossierMenuPicsPath.Add(basicPath + imgPath + dossierMenuPicsNames[i] + basicImgExt);
@@ -54,36 +87,36 @@ namespace PC_Protected_App
                 dossierMenuPics.Add(dossierMenuPicsNames[i] + "Свеч", new Bitmap(dossierMenuPicsPath[i + dossierMenuPicsNames.Length]));
             }
 
-            pictureBox1.BackgroundImage = dossierMenuPics[ДосьеМенюСкай];
+            pictureBox1.BackgroundImage = dossierMenuPics[dossierMenuPicsNames[0]];
             if (AccessLevel>=2)
             {
-                dossierMenuPicsForThisLevel.Add("2", dossierMenuPics[ДосьеМенюФитц]);
-                dossierMenuPicsForThisLevel.Add("2L", dossierMenuPics[ДосьеМенюФитц + "Свеч"]);
+                dossierMenuPicsForThisLevel.Add("2", dossierMenuPics[dossierMenuPicsNames[1]]);
+                dossierMenuPicsForThisLevel.Add("2L", dossierMenuPics[dossierMenuPicsNames[1] + "Свеч"]);
             }
             else
             {
-                dossierMenuPicsForThisLevel.Add("2", dossierMenuPics[ДосьеМенюНеизвестный2Уровень]);
-                dossierMenuPicsForThisLevel.Add("2L", dossierMenuPics[ДосьеМенюНеизвестный2Уровень + "Свеч"]);
+                dossierMenuPicsForThisLevel.Add("2", dossierMenuPics[dossierMenuPicsNames[4]]);
+                dossierMenuPicsForThisLevel.Add("2L", dossierMenuPics[dossierMenuPicsNames[4] + "Свеч"]);
             }
             if (AccessLevel >= 3)
             {
-                dossierMenuPicsForThisLevel.Add("3", dossierMenuPics[ДосьеМенюМэй]);
-                dossierMenuPicsForThisLevel.Add("3L", dossierMenuPics[ДосьеМенюМэй + "Свеч"]);
+                dossierMenuPicsForThisLevel.Add("3", dossierMenuPics[dossierMenuPicsNames[2]]);
+                dossierMenuPicsForThisLevel.Add("3L", dossierMenuPics[dossierMenuPicsNames[2] + "Свеч"]);
             }
             else
             {
-                dossierMenuPicsForThisLevel.Add("3", dossierMenuPics[ДосьеМенюНеизвестный3Уровень]);
-                dossierMenuPicsForThisLevel.Add("3L", dossierMenuPics[ДосьеМенюНеизвестный3Уровень + "Свеч"]);
+                dossierMenuPicsForThisLevel.Add("3", dossierMenuPics[dossierMenuPicsNames[5]]);
+                dossierMenuPicsForThisLevel.Add("3L", dossierMenuPics[dossierMenuPicsNames[5] + "Свеч"]);
             }
             if (AccessLevel >= 4)
             {
-                dossierMenuPicsForThisLevel.Add("4", dossierMenuPics[ДосьеМенюКолсон]);
-                dossierMenuPicsForThisLevel.Add("4L", dossierMenuPics[ДосьеМенюКолсон + "Свеч"]);
+                dossierMenuPicsForThisLevel.Add("4", dossierMenuPics[dossierMenuPicsNames[3]]);
+                dossierMenuPicsForThisLevel.Add("4L", dossierMenuPics[dossierMenuPicsNames[3] + "Свеч"]);
             }
             else
             {
-                dossierMenuPicsForThisLevel.Add("4", dossierMenuPics[ДосьеМенюНеизвестный4Уровень]);
-                dossierMenuPicsForThisLevel.Add("4L", dossierMenuPics[ДосьеМенюНеизвестный4Уровень + "Свеч"]);
+                dossierMenuPicsForThisLevel.Add("4", dossierMenuPics[dossierMenuPicsNames[6]]);
+                dossierMenuPicsForThisLevel.Add("4L", dossierMenuPics[dossierMenuPicsNames[6] + "Свеч"]);
             }
             pictureBox2.BackgroundImage = dossierMenuPicsForThisLevel["2"];
             pictureBox3.BackgroundImage = dossierMenuPicsForThisLevel["3"];
@@ -92,11 +125,11 @@ namespace PC_Protected_App
 
         private void PictureBox1_MouseHover(object sender, EventArgs e)
         {
-            pictureBox1.BackgroundImage = dossierMenuPics[ДосьеМенюСкай+"Свеч"];
+            pictureBox1.BackgroundImage = dossierMenuPics[dossierMenuPicsNames[0] + "Свеч"];
         }
         private void PictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox1.BackgroundImage = dossierMenuPics[ДосьеМенюСкай];
+            pictureBox1.BackgroundImage = dossierMenuPics[dossierMenuPicsNames[0]];
         }
         private void PictureBox2_MouseHover(object sender, EventArgs e)
         {
@@ -134,9 +167,16 @@ namespace PC_Protected_App
                 Task.Factory.StartNew(() =>
                 {
                     Thread.Sleep(SleepTime);
-                    pictureBox5.Invoke(new Action<bool>((s) => pictureBox5.Visible = s), false);
+                    try
+                    {
+                        pictureBox5.Invoke(new Action<bool>((s) => pictureBox5.Visible = s), false);
+
+                    }
+                    catch (Exception)
+                    {
+                    }
                 });
-                DossierPage dossier = new DossierPage(page);
+                DossierPage dossier = new DossierPage(page, type);
                 dossier.Show();
             }
             else
@@ -146,7 +186,13 @@ namespace PC_Protected_App
                 Task.Factory.StartNew(() =>
                 {
                     Thread.Sleep(SleepTime);
-                    pictureBox5.Invoke(new Action<bool>((s) => pictureBox5.Visible = s), false);
+                    try
+                    {
+                        pictureBox5.Invoke(new Action<bool>((s) => pictureBox5.Visible = s), false);
+                    }
+                    catch (Exception)
+                    {
+                    }
                 });
             }
         }

@@ -76,8 +76,6 @@ namespace QR_Authenticator
                 messProtection.EnterKey(key);
                 string dectyptedMess = messProtection.Decrypt(enctyptedMess);
 
-                //enctyptedMess += " " + key;
-                //new Tcp_S_R.Tcp_S_R(ip).SendMessage(DateTime.Now.ToString("T"));
                 new Tcp_S_R.Tcp_S_R(ip).SendMessage(enctyptedMess);
                 new Tcp_S_R.Tcp_S_R(ip).SendMessage(enctyptedMess.Length.ToString());
                 new Tcp_S_R.Tcp_S_R(ip).SendMessage(key);
@@ -117,12 +115,7 @@ namespace QR_Authenticator
 
         private void FabOnClick(object sender, EventArgs eventArgs)
         {
-            /*View view = (View) sender;
-            Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
-                .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();*/
-                //FindViewById<TextView>(Resource.Id.textView).Text = new Tcp_S_R.Tcp_S_R().ReceiveMessage();
-                //FindViewById<TextView>(Resource.Id.textView).Text = "тест";
-            }
+        }
 
         public bool OnNavigationItemSelected(IMenuItem item)
         {
