@@ -137,6 +137,7 @@ namespace PC_Protected_App
             }
             catch (Exception)
             {
+                ReceiveThreadFunk();
             }
         }
 
