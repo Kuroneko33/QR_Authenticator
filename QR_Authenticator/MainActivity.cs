@@ -49,6 +49,15 @@ namespace QR_Authenticator
                 var scanner = new MobileBarcodeScanner();
                 var result = await scanner.Scan();
 
+                /*К сожалению qr код не может правильно передать зашифрованное сообщение
+                string enctyptedIp = result.Text;
+                string IpKey = enctyptedIp.Substring(enctyptedIp.Length - 28);
+                enctyptedIp = enctyptedIp.Substring(0, enctyptedIp.Length - 28);
+                LFSR IpProtection = new LFSR();
+
+                IpProtection.EnterKey(IpKey);
+                string dectyptedIp = IpProtection.Decrypt(enctyptedIp);
+                */
                 if (result == null) return;
 
                 string ip = result.Text;
@@ -72,10 +81,10 @@ namespace QR_Authenticator
                 LFSR messProtection = new LFSR();
                 string key = messProtection.GenerateKey();
                 string enctyptedMess = messProtection.Encrypt(mess);
-
+                /*
                 messProtection.EnterKey(key);
                 string dectyptedMess = messProtection.Decrypt(enctyptedMess);
-
+                */
                 new Tcp_S_R.Tcp_S_R(ip).SendMessage(enctyptedMess);
                 new Tcp_S_R.Tcp_S_R(ip).SendMessage(enctyptedMess.Length.ToString());
                 new Tcp_S_R.Tcp_S_R(ip).SendMessage(key);

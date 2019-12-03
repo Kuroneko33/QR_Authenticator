@@ -95,9 +95,8 @@ namespace QR_Authenticator
         {
             GenerateSpectrum(text);
             byte[] textInBytes = Portable.Text.Encoding.GetEncoding(1251).GetBytes(text);
-            int textBitLength = textInBytes.Length * 8;
             BitArray textInBits = new BitArray(textInBytes);
-            BitArray codedTextInBits = new BitArray(textBitLength);
+            BitArray codedTextInBits = new BitArray(textInBytes);
             for (int i = 0; i < textInBits.Length; i++)
             {
                 if (textInBits[i] == Spectrum[i])//XOR
@@ -113,32 +112,11 @@ namespace QR_Authenticator
             byte[] codedTextInByts = BitArrayToByteArray(codedTextInBits);
             string codedTextInStr = Portable.Text.Encoding.GetEncoding(1251).GetString(codedTextInByts, 0, codedTextInByts.Length);
 
-            string decodedTextInStr = Portable.Text.Encoding.GetEncoding(1251).GetString(textInBytes);
-            byte[] codedTextInByts1231 = Portable.Text.Encoding.GetEncoding(1251).GetBytes(BitArrToStr(codedTextInBits));
-            byte[] textInBytes1 = BitArrayToByteArray(textInBits);
-
             return codedTextInStr;
         }
         public string Decrypt(string text)
         {
-            GenerateSpectrum(text);
-            byte[] codedTextInByts = Portable.Text.Encoding.GetEncoding(1251).GetBytes(text);
-            BitArray newCodedTextInBits = new BitArray(codedTextInByts);
-            BitArray decodedTextInBits = new BitArray(codedTextInByts);
-
-            for (int i = 0; i < newCodedTextInBits.Length; i++)
-            {
-                if (newCodedTextInBits[i] == Spectrum[i])//XOR
-                {
-                    decodedTextInBits[i] = true;
-                }
-                else
-                {
-                    decodedTextInBits[i] = false;
-                }
-            }
-            byte[] decodedTextInByts = BitArrayToByteArray(decodedTextInBits);
-            string decodedTextInStr = Portable.Text.Encoding.GetEncoding(1251).GetString(decodedTextInByts, 0, decodedTextInByts.Length);
+            string decodedTextInStr = Encrypt(text);
             return decodedTextInStr;
         }
 

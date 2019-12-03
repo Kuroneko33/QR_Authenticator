@@ -95,9 +95,8 @@ namespace PC_Protected_App
         {
             GenerateSpectrum(text);
             byte[] textInBytes = Encoding.Default.GetBytes(text);
-            int textBitLength = textInBytes.Length * 8;
             BitArray textInBits = new BitArray(textInBytes);
-            BitArray codedTextInBits = new BitArray(textBitLength);
+            BitArray codedTextInBits = new BitArray(textInBytes);
             for (int i = 0; i < textInBits.Length; i++)
             {
                 if (textInBits[i] == Spectrum[i])//XOR
@@ -115,24 +114,7 @@ namespace PC_Protected_App
         }
         public string Decrypt(string text)
         {
-            GenerateSpectrum(text);
-            byte[] codedTextInByts = Encoding.Default.GetBytes(text);
-            BitArray newCodedTextInBits = new BitArray(codedTextInByts);
-            BitArray decodedTextInBits = new BitArray(codedTextInByts);
-
-            for (int i = 0; i < newCodedTextInBits.Length; i++)
-            {
-                if (newCodedTextInBits[i] == Spectrum[i])//XOR
-                {
-                    decodedTextInBits[i] = true;
-                }
-                else
-                {
-                    decodedTextInBits[i] = false;
-                }
-            }
-            byte[] decodedTextInByts = BitArrayToByteArray(decodedTextInBits);
-            string decodedTextInStr = Encoding.Default.GetString(decodedTextInByts);
+            string decodedTextInStr = Encrypt(text);
             return decodedTextInStr;
         }
 
